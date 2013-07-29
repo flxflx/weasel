@@ -1,0 +1,34 @@
+'''
+Created on 16.05.2012
+
+@author: Felix
+'''
+
+from pygdb import PyGdb, environment, cpu, tracer
+from testbench.recorder import ServerTraceRecorder
+from testbed import PORT_GDB
+
+
+HOST = "192.168.56.102"
+
+
+PRIV_LEVEL = 2
+PROTO_STRING = 1
+ADDR_FUNC = 0x004006b4 # pure-ftpd.parser()
+
+mips = cpu.MIPS32()
+posix = environment.Posix()
+gdbSession = PyGdb(HOST, PORT_GDB, mips, posix)
+gdbSession.reset()
+bbTracer = tracer.BasicBlockTracer(gdbSession, ADDR_FUNC, breakOnEntireFunction=False)
+bbTracer.setup()
+tt = bbTracer.start()
+tt.join()
+print bbTracer.getTraces()[0]
+
+
+    
+    
+    
+    
+    
