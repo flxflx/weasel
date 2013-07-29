@@ -1,0 +1,19 @@
+<config name="ProFTPd">
+	<target path="C:\Users\Felix\Syssec\Projekte\SASER\pygdb\testing\proftpd_acid_full_x64_2" host="134.147.202.124" port="21" addrFork="0x40E550" protocol="FTP" cpu="x64" environment="POSIX">
+		<login privLevel="2" privLevelName="user">
+			<item value="jochen" description="username"/>
+			<item value="blub0r" description="password"/> 			
+		</login>
+		<login privLevel="1" privLevelName="anonymous">
+			<item value="ftp" description="username"/>
+			<item value="ftp" description="password"/> 			
+		</login>
+		<exclude function="0x438BB0"/>
+	</target>
+	<gdb host="134.147.202.124" port="2204" maxFunctionHits="10"/>
+	<!-- 	
+	 | debug-output levels range from 1 ('all') to 4 ('none') 
+	 | 'printProtocolInteraction' is boolean flag indicating whether the protocol-interaction should be printed
+	-->
+	<local levelDebugOutput="3" outputDir="./output/proftpd_acid_full_x64_2" printProtocolInteraction="True" saveTracingDataLocally="True"/>
+</config>
