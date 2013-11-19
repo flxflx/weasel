@@ -1,0 +1,16 @@
+echo "Creating user bddtestuser"
+/usr/sbin/useradd -M -U -d /usr/share/bdd-proftpd-common/home/bddtestuser -p `perl -e 'print crypt("bddtestuser", "bddtestuser")'` bddtestuser
+/bin/chown -R bddtestuser:bddtestuser /usr/share/bdd-proftpd-common/home/bddtestuser
+/bin/chown -R apache:apache /usr/share/bdd-proftpd-common/www
+
+echo "Enabling http://localhost/BDD"
+/usr/bin/ln -s /usr/share/bdd-proftpd-common/misc/bdd-proftpd.conf /etc/httpd/conf.d/bdd-proftpd.conf
+
+service mysql restart | true
+service sshd restart | true
+service apache2 restart | true
+
+echo "Setting mysql root password"
+/usr/bin/mysqladmin -u root password bdd
+/bin/chmod a+x /usr/share/bdd-proftpd-common/misc/bdd-proftpd-mysql.sh
+/usr/share/bdd-proftpd-common/misc/bdd-proftpd-mysql.sh bdd

@@ -1,0 +1,4 @@
+#!/bin/sh
+rm -f /usr/share/bdd-proftpd-src/config.pyc | true
+rm -f /usr/share/bdd-proftpd-src/test.pyc | true
+cd /usr/share/bdd-proftpd-src/ && make clean | true

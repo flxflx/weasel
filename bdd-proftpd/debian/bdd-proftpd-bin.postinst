@@ -1,0 +1,3 @@
+#!/bin/sh
+
+mv /etc/config.h /etc/proftpd_config_h

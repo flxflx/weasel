@@ -1,0 +1,12 @@
+Source: bdd-proftpd-src
+Section: misc
+Priority: extra
+Maintainer: Martin Steegmanns <martin.steegmanns@rub.de>
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, build-essential
+Standards-Version: 3.9.2
+Homepage: http://www.syssec.rub.de
+
+Package: bdd-proftpd-src
+Architecture: any
+Depends: python-urwid, python-paramiko, openssh-server, ${shlibs:Depends}, ${misc:Depends}
+Description: Backdoor Detection Learning Environment Source

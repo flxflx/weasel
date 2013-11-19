@@ -1,0 +1,3 @@
+#!/bin/bash
+/usr/sbin/userdel bddtestuser
+/bin/rm -rf /usr/share/bdd-proftpd-common/home/bddtestuser/
